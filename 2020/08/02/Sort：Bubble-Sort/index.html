@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="generator" content="Hexo 4.2.1"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>冒泡排序 - Vincent</title><meta description="1.基本思想&amp;amp;#8195;&amp;amp;#8195;冒泡排序是一种交换排序，核心是冒泡，把数组中最小的那个往上冒，冒的过程就是和他相邻的元素交换。&amp;amp;#8195;&amp;amp;#8195;重复走访要排序的数列，通过两两比较相邻记录的排序码。排序过程中每次从后往前冒一个最小值，且每次能确定一个数在序列中的最终位置。若发生逆序，则交换；有俩种方式进行冒泡，一种是先把小的冒泡到前边去，另一种是把大的元素冒泡到后边。"><meta property="og:type" content="blog"><meta property="og:title" content="冒泡排序"><meta property="og:url" content="http://yoursite.com/"><meta property="og:site_name" content="Vincent"><meta property="og:description" content="1.基本思想&amp;amp;#8195;&amp;amp;#8195;冒泡排序是一种交换排序，核心是冒泡，把数组中最小的那个往上冒，冒的过程就是和他相邻的元素交换。&amp;amp;#8195;&amp;amp;#8195;重复走访要排序的数列，通过两两比较相邻记录的排序码。排序过程中每次从后往前冒一个最小值，且每次能确定一个数在序列中的最终位置。若发生逆序，则交换；有俩种方式进行冒泡，一种是先把小的冒泡到前边去，另一种是把大的元素冒泡到后边。"><meta property="og:locale" content="en_US"><meta property="article:published_time" content="2020-08-02T09:40:54.000Z"><meta property="article:modified_time" content="2020-08-06T02:36:53.654Z"><meta property="article:author" content="YeWenzhen"><meta property="article:tag" content="Algorithm"><meta property="twitter:card" content="summary"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2020/08/02/Sort%EF%BC%9ABubble-Sort/"},"headline":"Vincent","image":[],"datePublished":"2020-08-02T09:40:54.000Z","dateModified":"2020-08-06T02:36:53.654Z","author":{"@type":"Person","name":"YeWenzhen"},"description":"1.基本思想&amp;#8195;&amp;#8195;冒泡排序是一种交换排序，核心是冒泡，把数组中最小的那个往上冒，冒的过程就是和他相邻的元素交换。&amp;#8195;&amp;#8195;重复走访要排序的数列，通过两两比较相邻记录的排序码。排序过程中每次从后往前冒一个最小值，且每次能确定一个数在序列中的最终位置。若发生逆序，则交换；有俩种方式进行冒泡，一种是先把小的冒泡到前边去，另一种是把大的元素冒泡到后边。"}</script><link rel="canonical" href="http://yoursite.com/2020/08/02/Sort%EF%BC%9ABubble-Sort/"><link rel="icon" href="/img/my.png"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><link rel="alternate" href="/atom.xml" title="Vincent" type="application/atom+xml">
+</head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/my.png" alt="Vincent" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><time class="level-item" dateTime="2020-08-02T09:40:54.000Z" title="2020-08-02T09:40:54.000Z">2020-08-02</time><span class="level-item"><a class="link-muted" href="/categories/Learning-notes/">Learning notes</a><span> / </span><a class="link-muted" href="/categories/Learning-notes/Algorithm/">Algorithm</a><span> / </span><a class="link-muted" href="/categories/Learning-notes/Algorithm/Sort/">Sort</a></span><span class="level-item">7 minutes read (About 1080 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">冒泡排序</h1><div class="content"><hr>
+<h2 id="1-基本思想"><a href="#1-基本思想" class="headerlink" title="1.基本思想"></a>1.基本思想</h2><p>&#8195;&#8195;冒泡排序是一种交换排序，核心是冒泡，把数组中最小的那个往上冒，冒的过程就是和他相邻的元素交换。</b><br>&#8195;&#8195;重复走访要排序的数列，通过两两比较相邻记录的排序码。排序过程中每次从后往前冒一个最小值，且每次能确定一个数在序列中的最终位置。若发生逆序，则交换；有俩种方式进行冒泡，一种是先把小的冒泡到前边去，另一种是把大的元素冒泡到后边。</p>
+<a id="more"></a>
+
+<hr>
+<h2 id="2-图解"><a href="#2-图解" class="headerlink" title="2.图解"></a>2.图解</h2><p> </p>
+<center>
+<img src=https://vincent-blog-photo.oss-cn-shenzhen.aliyuncs.com/Algorithm/Sort/bubble_sort_1.gif alt=冒泡排序 >
+</center> 
+<p> </p>
+
+<hr>
+<h2 id="3-实现逻辑"><a href="#3-实现逻辑" class="headerlink" title="3.实现逻辑"></a>3.实现逻辑</h2><p>● 比较相邻的元素。如果第一个比第二个大，就交换他们两个。<br>● 对每一对相邻元素作同样的工作，从开始第一对到结尾的最后一对。,每次遍历都会当前遍历最大的数放在最后，<b>最后的元素应该会是最大的数。</b><br>● 所以上次遍历后产生的最大的数已经在后面了，所以不用再对其进行遍历了，所以每次两两交换的数量会变小（即减i）<br>● 持续每次对越来越少的元素重复上面的步骤，直到没有任何一对数字需要比较。</p>
+<p> </p>
+通过两层循环控制：<br>
+● 第一个循环（外循环），负责把需要冒泡的那个数字排除在外；<br>
+● 第二个循环（内循环），负责两两比较交换。<br>
+
+<hr>
+<h2 id="4-举个栗子"><a href="#4-举个栗子" class="headerlink" title="4.举个栗子"></a>4.举个栗子</h2><p><b>假如有数组为[10,1,35,61,89,36,55]</b></p>
+<p></p>
+第一趟排序：<br>
+第一次排序：10和1比较，10大于1，交换位置&#8195;&#8195;&#8195;&#8195;&#8198;[1,10,35,61,89,36,55]<br>
+第二次排序：10和35比较，10小于35，不交换位置&#8195;&#8195;[1,10,35,61,89,36,55]<br>
+第三次排序：35和61比较，35小于61，不交换位置&#8195;&#8195;[1,10,35,61,89,36,55]<br>
+第四次排序：61和89比较，61小于89，不交换位置&#8195;&#8195;[1,10,35,61,89,36,55]<br>
+第五次排序：89和36比较，89大于36，交换位置&#8195;&#8195;&#8195;[1,10,35,61,36,89,55]<br>
+第六次排序：89和55比较，89大于55，交换位置&#8195;&#8195;&#8195;[1,10,35,61,36,55,89]<br>
+第一趟总共进行了<b>六</b>次比较，排序结果：&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8194;[1,10,35,61,36,55,<b><font color="#FF0000">89</font></b>]<br>
+<p></p>
+<p></p>
+第二趟排序：<br>
+第一次排序：1和10比较，1小于10，不交换位置&#8195;&#8195;&#8195;&#8198;[1,10,35,61,36,55,89]<br>
+第二次排序：10和35比较，10小于35，不交换位置&#8195;&#8195;[1,10,35,61,36,55,89]<br>
+第三次排序：35和61比较，35小于61，不交换位置&#8195;&#8195;[1,10,35,61,36,55,89]<br>
+第四次排序：61和36比较，61大于36，交换位置&#8195;&#8195;&#8195;[1,10,35,36,61,55,89]<br>
+第五次排序：61和55比较，61大于55，交换位置&#8195;&#8195;&#8195;[1,10,35,36,55,61,89]<br>
+第二趟总共进行了<b>五</b>次比较，排序结果：&#8195;&#8195;&#8195;&#8195;&#8195;&#8195;&#8194;[1,10,35,36,55,<b><font color="#FF0000">61</font></b>,89]<br>
+<p></p>
+按这样子的思路以此类推下去<br>
+假如数组有n个元素
+<p></p>
+第一个for循环<br>
+从上面的分析可以看到，第一趟遍历走了n次，把n个元素里最大的元素移到本次遍历的最后端<br>
+第二次遍历走了n-1次，把n-1个元素里最大的元素移到本次遍历的最后一端，<br>
+因为倒数第二次遍历，就可以把2元素里最大的移到本次遍历的最后一端，那么，就不用再遍历最后一个元素了，所以代码中第一个for循环只需要n-1；<br>
+<p></p>
+第二个for循环<br>
+从上面的分析可以看到，第一趟遍历走了n次，把n个元素里最大的元素移到本次遍历的最后端<br>
+第二次遍历走了n-1次，把n-1个元素里最大的元素移到本次遍历的最后一端，<br>
+同样的，是不是每次遍历，都会少遍历一个元素呢，所以第二个for循环只需要n-i-1
+
+<hr>
+<h2 id="5-代码实现及详解"><a href="#5-代码实现及详解" class="headerlink" title="5.代码实现及详解"></a>5.代码实现及详解</h2><p>c++版本</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">bubble_sort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">int</span> i, j;  </span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len<span class="number">-1</span>; i++)    <span class="comment">//总遍历的次数</span></span><br><span class="line">        <span class="keyword">for</span> (j = <span class="number">0</span>; j &lt; len - <span class="number">1</span> -i; j++)  <span class="comment">//每次遍历需要走的个数</span></span><br><span class="line">            <span class="keyword">if</span> (arr[j] &gt; arr[j+<span class="number">1</span>])</span><br><span class="line">                swap(arr[j], arr[j+<span class="number">1</span>]);  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-分析"><a href="#6-分析" class="headerlink" title="6.分析"></a>6.分析</h2><p>如果有n个数，最多需要走n-1次遍历就可以排好<br>平均时间复杂度：O(n^2)<br>最佳时间复杂度：O(n)<br>最差时间复杂度：O(n^2)<br>空间复杂度：O(1)</p>
+<hr>
+<h2 id="7-参考"><a href="#7-参考" class="headerlink" title="7.参考"></a>7.参考</h2><p><a href="url">https://zhuanlan.zhihu.com/p/122284534</a><br><a href="url">https://www.cnblogs.com/bigdata-stone/p/10464243.html</a></p>
+</div><div class="article-tags size-small is-uppercase mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Algorithm/">Algorithm</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button is-info donate"><span class="icon is-small"><i class="fab fa-alipay"></i></span><span>Alipay</span><span class="qrcode"><img src="https://vincent-blog-photo.oss-cn-shenzhen.aliyuncs.com/denates/alipay.jpg" alt="Alipay"></span></a><a class="button is-success donate"><span class="icon is-small"><i class="fab fa-weixin"></i></span><span>Wechat</span><span class="qrcode"><img src="https://vincent-blog-photo.oss-cn-shenzhen.aliyuncs.com/denates/wechat.png" alt="Wechat"></span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2020/08/06/Sort%EF%BC%9AMerge-Sort/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">归并排序</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2020/04/20/essay2/"><span class="level-item">想见你</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="" src="/img/my.png" alt="Ye Wenzhen"></figure><p class="title is-size-4 is-block line-height-inherit">Ye Wenzhen</p><p class="is-size-6 is-block">Back-End Developer</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Shenzhen</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">12</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">6</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">2</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/YeWenzhen" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/YeWenzhen"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Mail" href="mailto:yewenzhen.d@gmail.com"><i class="far fa-envelope"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/Essay/"><span class="level-start"><span class="level-item">Essay</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/Learning-notes/"><span class="level-start"><span class="level-item">Learning notes</span></span><span class="level-end"><span class="level-item tag">10</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/Learning-notes/Algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">2</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/Learning-notes/Algorithm/Sort/"><span class="level-start"><span class="level-item">Sort</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/Learning-notes/BackEnd/"><span class="level-start"><span class="level-item">BackEnd</span></span><span class="level-end"><span class="level-item tag">8</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/Learning-notes/BackEnd/Spring-Boot/"><span class="level-start"><span class="level-item">Spring Boot</span></span><span class="level-end"><span class="level-item tag">8</span></span></a></li></ul></li></ul></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/Algorithm/"><span class="tag">Algorithm</span><span class="tag is-grey-lightest">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Spring-Boot/"><span class="tag">Spring Boot</span><span class="tag is-grey-lightest">8</span></a></div></div></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/my.png" alt="Vincent" height="28"></a><p class="size-small"><span>&copy; 2021 YeWenzhen</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            site: {
+                url: 'http://yoursite.com',
+                external_link: {"enable":true,"exclude":[]}
+            },
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to Top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
